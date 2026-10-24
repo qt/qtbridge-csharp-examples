@@ -1,0 +1,37 @@
+# Visual Studio cache/options directory
+.vs/
+
+# User-specific files
+*.user
+.DS_Store
+
+# Build results
+debug/
+release/
+bin/
+obj/
+.nuget/
+
+# Generated Headers
+include/*
+!include/*.h
+
+# Build logs
+*.binlog
+
+# Local integration-test settings
+/TestSettings.props
+
+# Local nuget
+nuget/local/
+nuget/Qt.Bridge.CSharp.Package/README.md
+nuget/Qt.Bridge.CSharp.Templates/README.md
+nuget/Qt.Bridge.CSharp.Templates/templates/Qt.Bridge.CSharp.Project/NewProject.csproj
+src/Qt.Bridge.CSharp.VisualStudio.Extension/.vsextension/string-resources.json
+
+# Auto-version properties
+qt_autoversion.props
+
+# DocFX generated output
+docs/api/
+docs/_site/

@@ -1,0 +1,42 @@
+// Copyright (C) 2026 The Qt Company Ltd.
+// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
+
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using Qt.Bridge.Models;
+using Qt.Bridge.Utils;
+using Qt.Quick;
+
+namespace PrimesApp
+{
+    public class Primes : ListModel<Prime>, INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private List<Prime> Items { get; } = new();
+
+        public int Count
+        {
+            get => Items.Count;
+            set
+            {
+                if (value == Items.Count)
+                    return;
+                Items.Clear();
+                Items.AddRange(Enumerable.Range(0, value)
+                    .Select(i => new Prime() { N = i + 1 }));
+                PropertyChanged?.Invoke(this, new(nameof(Count)));
+            }
+        }
+
+        public override int ItemCount() => Count;
+
+        public override Prime Data(int idx)
+        {
+            if (idx < 0 || idx >= Count)
+                return null;
+            return Items[idx];
+        }
+    }
+}
